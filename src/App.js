@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import data from './data'
-const { routes, airlines, airports, getAirlineById, getAirportByCode } = data
+const { routes, getAirlineById, getAirportByCode } = data
 
 const App = () => {
   
@@ -22,10 +22,11 @@ const App = () => {
         <td>Destination</td>
       </tr>
       {routes.map(r => <tr>
-        <td>{getAirlineById(r.airline)}</td>
-        <td>{r.src}</td>
-        <td>{r.dest}</td>
-      </tr>)}
+          <td>{getAirlineById(r.airline)}</td>
+          <td>{getAirportByCode(r.src)}</td>
+          <td>{getAirportByCode(r.dest)}</td>
+        </tr>)
+       }
     </table>
     
   </div>
