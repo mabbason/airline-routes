@@ -8,8 +8,6 @@ const Button = (props) => (
 
 const Table = ({ className, columns, rows, format, rowsPerPage }) => {
   const [ page, setPage ] = useState(0)
-  // let rowsPerPage = 25
-  console.log('Table', rowsPerPage)
   let startingRow = rowsPerPage * page
 
   const handleSetPage = (newPageNum) => {
@@ -33,16 +31,17 @@ const Table = ({ className, columns, rows, format, rowsPerPage }) => {
     <Button onClick={() => handleSetPage(page + 1)} text="Next" />
 
     <table>
-      <tr>
-        {columns.map(c => <td><strong>{c.name}</strong></td>)}
-      </tr>
-      {rows.slice(startingRow, startingRow + rowsPerPage).map((r, idx) => <tr>
-          {/* <td>{idx} </td> */}
-          <td>{format('airline', r.airline)}</td>
-          <td>{format('src', r.src)}</td>
-          <td>{format('dest', r.src)}</td>
-        </tr>)
-       }
+      <tbody>
+        <tr>
+          {columns.map(c => <td key={c.name}><strong>{c.name}</strong></td>)}
+        </tr>
+        {rows.slice(startingRow, startingRow + rowsPerPage).map((r) => <tr key={`${r.src}${r.dest}`}>
+            <td>{format('airline', r.airline)}</td>
+            <td>{format('src', r.src)}</td>
+            <td>{format('dest', r.src)}</td>
+          </tr>)
+        }
+       </tbody>
     </table>
     </>
   )

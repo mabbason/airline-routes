@@ -42,7 +42,6 @@ const App = () => {
         <option value={25}>25</option>
         <option value={50}>50</option>
         <option value={100}>100</option>
-        {/* <option value="all">All</option> */}
       </select>
     </label>
     <Table className="routes-table" columns={columns} rows={routes} format={formatValue} rowsPerPage={perPage}/>
