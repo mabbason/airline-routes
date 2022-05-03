@@ -24,6 +24,7 @@ const Table = ({ className, columns, rows, format, rowsPerPage }) => {
     return givenRow > rows.length ? rows.length : givenRow
   }
 
+  // console.log("Table, rows:", rows)
   return (
     <>
     <Button onClick={() => handleSetPage(page - 1)} text="Previous" />
@@ -38,7 +39,7 @@ const Table = ({ className, columns, rows, format, rowsPerPage }) => {
         {rows.slice(startingRow, startingRow + rowsPerPage).map((r) => <tr key={`${r.src}${r.dest}`}>
             <td>{format('airline', r.airline)}</td>
             <td>{format('src', r.src)}</td>
-            <td>{format('dest', r.src)}</td>
+            <td>{format('dest', r.dest)}</td>
           </tr>)
         }
        </tbody>
